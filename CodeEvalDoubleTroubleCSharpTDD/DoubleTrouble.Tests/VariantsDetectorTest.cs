@@ -29,7 +29,16 @@ namespace DoubleTrouble.Tests
 
         public int DetectVariants(string ancientCode)
         {
-            int variants = 1;
+            int variants = 0;
+
+            var ancientCodePartLength = ancientCode.Length / 2;
+            string ancientCodePartOne = ancientCode.Substring(0, ancientCodePartLength);
+            string ancientCodePartTwo = ancientCode.Substring(ancientCodePartLength);
+
+            if (ancientCodePartOne == ancientCodePartTwo)
+            {
+                variants = 1;
+            }
 
             return variants;
         }
