@@ -11,6 +11,14 @@ namespace DoubleTrouble.Tests
             int variants = sut.DetectVariants("AAAAAA");
             Assert.Equal(1, variants);
         }
+
+        [Fact]
+        public void DetectVariants_InvalidCodeWithoutStars_ReturnsZeroPossibilities()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.DetectVariants("AAAAAB");
+            Assert.Equal(0, variants);
+        }
     }
 
     internal class VariantsDetector
