@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-using Xunit;
+﻿using Xunit;
 
 namespace DoubleTrouble.Tests
 {
@@ -24,6 +18,14 @@ namespace DoubleTrouble.Tests
             var sut = new VariantsDetector();
             int variants = sut.DetectVariants("AAAAAB");
             Assert.Equal(0, variants);
+        }
+
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoSamePartsFullParts_ReturnOnePossibility()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("AAA", "AAA");
+            Assert.Equal(1, variants);
         }
     }
 
