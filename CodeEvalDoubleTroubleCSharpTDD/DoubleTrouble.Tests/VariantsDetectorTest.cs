@@ -44,6 +44,38 @@ namespace DoubleTrouble.Tests
             Assert.Equal(1, variants);
         }
 
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoDifferentPartsOneWithOneStar_ReturnsNoPossibilities()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("AAA", "A*B");
+            Assert.Equal(0, variants);
+        }
+
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoSamePartsBothWithOneStarOnSamePosition_ReturnsTwoPossibilities()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("A*A", "A*A");
+            Assert.Equal(2, variants);
+        }
+
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoSamePartsBothWithTwoStarsOnSamePosition_ReturnsFourPossibilities()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("A**", "A**");
+            Assert.Equal(4, variants);
+        }
+
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoSamePartsWithOneStarOnDifferentPositions_ReturnsOnePossibility()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("AA*", "A*B");
+            Assert.Equal(1, variants);
+        }
+
     }
 
     internal class VariantsDetector
