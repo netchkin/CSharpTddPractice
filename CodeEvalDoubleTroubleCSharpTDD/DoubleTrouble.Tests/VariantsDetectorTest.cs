@@ -1,4 +1,10 @@
-﻿using Xunit;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using Xunit;
 
 namespace DoubleTrouble.Tests
 {
@@ -35,10 +41,7 @@ namespace DoubleTrouble.Tests
             string ancientCodePartOne = ancientCode.Substring(0, ancientCodePartLength);
             string ancientCodePartTwo = ancientCode.Substring(ancientCodePartLength);
 
-            if (ancientCodePartOne == ancientCodePartTwo)
-            {
-                variants = 1;
-            }
+            variants = ComputeVariantsForCodeParts(ancientCodePartOne, ancientCodePartTwo);
 
             return variants;
         }
