@@ -27,6 +27,14 @@ namespace DoubleTrouble.Tests
             int variants = sut.ComputeVariantsForCodeParts("AAA", "AAA");
             Assert.Equal(1, variants);
         }
+
+        [Fact]
+        public void ComputeVariantsForCodeParts_TwoDifferentPartsFullParts_ReturnOnePossibility()
+        {
+            var sut = new VariantsDetector();
+            int variants = sut.ComputeVariantsForCodeParts("AAA", "ABA");
+            Assert.Equal(0, variants);
+        }
     }
 
     internal class VariantsDetector
