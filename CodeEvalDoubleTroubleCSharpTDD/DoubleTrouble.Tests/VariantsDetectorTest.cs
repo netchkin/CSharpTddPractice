@@ -21,58 +21,42 @@ namespace DoubleTrouble.Tests
         }
 
         [Fact]
-        public void ComputeVariantsForCodeParts_TwoSamePartsFullParts_ReturnsOnePossibility()
+        public void DetectVariants_TwoSamePartsOneWithOneStar_ReturnsOnePossibility()
         {
             var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("AAA", "AAA");
+            int variants = sut.DetectVariants("AAAA*A");
             Assert.Equal(1, variants);
         }
 
         [Fact]
-        public void ComputeVariantsForCodeParts_TwoDifferentPartsFullParts_ReturnsOnePossibility()
+        public void DetectVariants_TwoDifferentPartsOneWithOneStar_ReturnsNoPossibilities()
         {
             var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("AAA", "ABA");
+            int variants = sut.DetectVariants("AAAA*B");
             Assert.Equal(0, variants);
         }
 
         [Fact]
-        public void ComputeVariantsForCodeParts_TwoSamePartsOneWithOneStar_ReturnsOnePossibility()
+        public void DetectVariants_TwoSamePartsBothWithOneStarOnSamePosition_ReturnsTwoPossibilities()
         {
             var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("AAA", "A*A");
-            Assert.Equal(1, variants);
-        }
-
-        [Fact]
-        public void ComputeVariantsForCodeParts_TwoDifferentPartsOneWithOneStar_ReturnsNoPossibilities()
-        {
-            var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("AAA", "A*B");
-            Assert.Equal(0, variants);
-        }
-
-        [Fact]
-        public void ComputeVariantsForCodeParts_TwoSamePartsBothWithOneStarOnSamePosition_ReturnsTwoPossibilities()
-        {
-            var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("A*A", "A*A");
+            int variants = sut.DetectVariants("A*AA*A");
             Assert.Equal(2, variants);
         }
 
         [Fact]
-        public void ComputeVariantsForCodeParts_TwoSamePartsBothWithTwoStarsOnSamePosition_ReturnsFourPossibilities()
+        public void DetectVariants_TwoSamePartsBothWithTwoStarsOnSamePosition_ReturnsFourPossibilities()
         {
             var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("A**", "A**");
+            int variants = sut.DetectVariants("A**A**");
             Assert.Equal(4, variants);
         }
 
         [Fact]
-        public void ComputeVariantsForCodeParts_TwoSamePartsWithOneStarOnDifferentPositions_ReturnsOnePossibility()
+        public void DetectVariants_TwoSamePartsWithOneStarOnDifferentPositions_ReturnsOnePossibility()
         {
             var sut = new VariantsDetector();
-            int variants = sut.ComputeVariantsForCodeParts("AA*", "A*B");
+            int variants = sut.DetectVariants("AA*A*B");
             Assert.Equal(1, variants);
         }
 
