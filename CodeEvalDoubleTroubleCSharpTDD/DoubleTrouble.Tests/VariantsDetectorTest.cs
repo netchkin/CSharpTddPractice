@@ -18,5 +18,12 @@ namespace DoubleTrouble.Tests
         public VariantsDetector()
         {
         }
+
+        public int DetectVariants(string ancientCode)
+        {
+            int variants = 1;
+
+            return variants;
+        }
     }
 }
