@@ -47,5 +47,12 @@ namespace DoubleTrouble.Tests
 
             return variants;
         }
+
+        internal int ComputeVariantsForCodeParts(string codePartOne, string codePartTwo)
+        {
+            int variants = 1;
+
+            return variants;
+        }
     }
 }
